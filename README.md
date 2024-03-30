@@ -4,13 +4,20 @@ Run Ardupilot SITL in Ubuntu LTS 22.04, forwarding the UIs to macOS using X11/XQ
 
 ![Screenshot of macOS running XQuartz showing 3 windows: ArduPlane SITL, MavProxy Map and MavProxy console](images/xquartz.png)
 
+## Quick usage
+
+*The quick approach skips setting up UIs and won't use docker-compose, but starts the SITL in **one** command, as long as Docker Desktop is installed.*
+```bash
+docker run -it orthuk/ardupilot-sitl /home/docker/ardupilot/Tools/autotest/sim_vehicle.py -v ArduPlane --frame quadplane --map --console
+```
+
 ## Setup
 
 - Install [docker desktop](https://www.docker.com/products/docker-desktop/)
 - Clone repo: `git clone https://github.com/ben-xD/ardupilot-sitl-docker`
 - Run `cd ardupilot-sitl-docker`
 - Either:
-  - Download and run the [images I publish](https://hub.docker.com/repository/docker/orthuk/ardupilot-sitl/general): `docker-compose -p sitl up -d remote`
+  - Download and run the [images I publish](https://hub.docker.com/r/orthuk/ardupilot-sitl): `docker-compose -p sitl up -d remote`
   - Build a local image: `docker-compose -p sitl up -d local`
 
 ## Usage
