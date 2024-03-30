@@ -1,6 +1,8 @@
 # Ardupilot SITL docker
 
-With Ubuntu LTS 22.04 and X11/XQuartz display
+Run Ardupilot SITL in Ubuntu LTS 22.04, forwarding the UIs to macOS using X11/XQuartz display
+
+![Screenshot of macOS running XQuartz showing 3 windows: ArduPlane SITL, MavProxy Map and MavProxy console](images/xquartz.png)
 
 ## Setup
 
@@ -20,12 +22,12 @@ With Ubuntu LTS 22.04 and X11/XQuartz display
 - **Enter container approach:** Enter container: run `docker exec -it sitl-local-1 bash`
   - Once inside the container, start SITL: run `sim_vehicle.py -v ArduPlane --frame quadplane --map --console`
 
-## To get UI (MavProxy map and console) on macOS
-
-![Screenshot of macOS running XQuartz showing 3 windows: ArduPlane SITL, MavProxy Map and MavProxy console](images/xquartz.png)
+## To setup UI (MavProxy map, console and ArduPlane SITL) on macOS
 
 - Install [Xquartz](https://www.xquartz.org/)
-- Configure it following https://stackoverflow.com/a/72593701/7365866
+- Open Xquarts, go into preferences, Security, and enable  "Allow connections from network clients" (credits to https://stackoverflow.com/a/72593701/7365866)
+![XQuartz settings page](https://i.stack.imgur.com/NYWcM.png)
+
 - Restart your computer
 - In your terminal, run `xhost + 127.0.0.1`. You need to re-run this whenever XQuartz is restarted
 - Start SITL: run `docker exec -it sitl-local-1 /home/docker/ardupilot/Tools/autotest/sim_vehicle.py -v ArduPlane --frame quadplane --map --console`
