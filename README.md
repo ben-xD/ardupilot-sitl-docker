@@ -32,12 +32,12 @@ Run Ardupilot SITL in Ubuntu LTS 22.04, forwarding the UIs to macOS using X11/XQ
 - In your terminal, run `xhost + 127.0.0.1`. You need to re-run this whenever XQuartz is restarted
 - Start SITL: run `docker exec -it sitl-local-1 /home/docker/ardupilot/Tools/autotest/sim_vehicle.py -v ArduPlane --frame quadplane --map --console`
 
-## Avoiding running `zhost +` everytime
+## Avoiding running `xhost +` everytime
 
 You could automatically run by adding the following to your `.zshrc`:
 ```bash
-# See: 
-# Allow docker containers to access X11/XQuartZ
+# Ardupilot SITL Docker, see https://github.com/ben-xd/ardupilot-sitl-docker
+# Allow docker containers to access X11/XQuartz
 xhost + 127.0.0.1 >/dev/null 2>&1
 ```
 
