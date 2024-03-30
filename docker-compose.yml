@@ -1,8 +1,13 @@
 services:
-  sitl:
+  local:
     build:
       context: .
       dockerfile: Dockerfile
+    entrypoint: "tail -f /dev/null"
+    environment:
+      - DISPLAY=host.docker.internal:0
+  remote:
+    image: orthuk/ardupilot-sitl
     entrypoint: "tail -f /dev/null"
     environment:
       - DISPLAY=host.docker.internal:0
