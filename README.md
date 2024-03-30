@@ -1,6 +1,6 @@
 # Ardupilot SITL docker
 
-Run Ardupilot SITL in Ubuntu LTS 22.04, forwarding the UIs to macOS using X11/XQuartz display
+Run Ardupilot SITL in Docker in Ubuntu LTS 22.04, with SITL and MAVProxy UI using X11/XQuartz display
 
 ![Screenshot of macOS running XQuartz showing 3 windows: ArduPlane SITL, MavProxy Map and MavProxy console](images/xquartz.png)
 
@@ -29,6 +29,16 @@ docker run -it orthuk/ardupilot-sitl /home/docker/ardupilot/Tools/autotest/sim_v
 - **Enter container approach:** Enter container: run `docker exec -it sitl-local-1 bash`
   - Once inside the container, start SITL: run `sim_vehicle.py -v ArduPlane --frame quadplane --map --console`
 
+### More specific usage examples
+
+Pro tip: Read the help pages for sim_vehicle.py (`sim-vehicle.help.md`) and MAVProxy (`MAVProxy.help.md`).
+
+- Run alongside other GCSs by configuring MAVProxy to output to a port that your GCS listens on: run `docker exec -it sitl-local-1 /home/docker/ardupilot/Tools/autotest/sim_vehicle.py -v ArduPlane --frame quadplane --map --console -w --mavproxy-args="--out udp:host.docker.internal:14550 --state-basedir=/tmp/mavlink-sitl"`
+  - Just install and start [QGroundControl](http://qgroundcontrol.com/). QGroundControl will automatically detect UDP mavlink on 14550.
+  - You can even connect your SITL to [Android mission planner](https://ardupilot.org/planner/docs/mission-planner-installation.html#mission-planner-on-android). Find out your android's IP address, and add `--out :udp:$ANDROID_IP_ADDRESS:14550` and launch Mission Planner.
+
+![QGroundControl on macOS and Mission Planner on Android](./images/GCSs.png)
+
 ## To setup UI (MavProxy map, console and ArduPlane SITL) on macOS
 
 - Install [Xquartz](https://www.xquartz.org/)
@@ -56,6 +66,9 @@ xhost + 127.0.0.1 >/dev/null 2>&1
 - https://ardupilot.org/dev/docs/building-setup-linux.html#building-setup-linux
 - https://stackoverflow.com/questions/72586838/xquartz-cant-open-display-mac-os
 - https://stackoverflow.com/questions/44429394/x11-forwarding-of-a-gui-app-running-in-docker
+- Help pages are saved  to `sim_vehicle.README.md` and `MAVProxy.README.md` for convenience using:
+  - `docker exec -it sitl-local-1 /home/docker/ardupilot/Tools/autotest/sim_vehicle.py --help > sim_vehicle.README.md`
+  - `docker exec -it sitl-local-1 mavproxy.py --help > MAVProxy.README.md`
 
 ## Alternative approaches
 
