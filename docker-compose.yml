@@ -11,3 +11,13 @@ services:
     entrypoint: "tail -f /dev/null"
     environment:
       - DISPLAY=host.docker.internal:0
+    # # Just if we use TCP
+    # ports:
+    #   - "5760:5760"
+    #     # GCS can't listen with udpin:0.0.0.0:5760 if this is set:
+    #     # SO even if i just forward udp ports, it will listen on that port.
+    #     # So my gcs application can't listen on that port either. (mavlink_connection()) 
+    #     # also wants to listen on that port.
+    #     # - "5760:5760/udp"
+    #     # - "14550:14550/udp"
+    #     # - "14553:14553/udp"
