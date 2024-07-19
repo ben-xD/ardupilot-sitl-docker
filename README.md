@@ -36,6 +36,7 @@ Pro tip: Read the help pages for sim_vehicle.py (`sim-vehicle.help.md`) and MAVP
 - Run alongside other GCSs by configuring MAVProxy to output to a port that your GCS listens on: run `docker exec -it sitl-local-1 /home/docker/ardupilot/Tools/autotest/sim_vehicle.py -v ArduPlane --frame quadplane --map --console -w --mavproxy-args="--out udp:host.docker.internal:14550 --state-basedir=/tmp/mavlink-sitl"`
   - Just install and start [QGroundControl](http://qgroundcontrol.com/). QGroundControl will automatically detect UDP mavlink on 14550.
   - You can even connect your SITL to [Android mission planner](https://ardupilot.org/planner/docs/mission-planner-installation.html#mission-planner-on-android). Find out your android's IP address, and add `--out :udp:$ANDROID_IP_ADDRESS:14550` and launch Mission Planner.
+- Run without MAVProxy: `docker exec -it sitl-remote-1 /home/docker/ardupilot/build/sitl/bin/arduplane -S --model quadplane --speedup 1 --sysid 1 --slave 0 --defaults Tools/autotest/default_params/quadplane.parm --sim-address=host.docker.internal -I0`, then start your GCS.
 
 ![QGroundControl on macOS and Mission Planner on Android](./images/GCSs.png)
 
