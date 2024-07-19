@@ -1,10 +1,6 @@
 # Ardupilot provides `install-prereqs-ubuntu.sh`, so let's use ubuntu
 FROM ubuntu:22.04
 
-# More releases: https://github.com/ArduPilot/ardupilot/releases
-# Just use the latest one
-ARG RELEASE_TAG=Rover-4.4.0
-
 ## Ardupilot prereqs will hang if we don't disable interactive prompts (installing dependencies/apt and timezone configuration)
 ENV TZ=UTC
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
@@ -23,17 +19,16 @@ RUN echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
 USER $USER
 ENV HOME=/home/$USER
 WORKDIR $HOME
-
-# Clone ardupilot
-RUN git clone https://github.com/ArduPilot/ardupilot.git
 ENV ARDUPILOT_PATH=/home/$USER/ardupilot
-WORKDIR $ARDUPILOT_PATH
-RUN git checkout ${RELEASE_TAG}
-RUN git submodule update --init --recursive
+ARG ARDUPILOT_PATH_EXTERNAL=ardupilot
 
+## Copy and build ardupilot 
+COPY --chown=$USER $ARDUPILOT_PATH_EXTERNAL $ARDUPILOT_PATH
+WORKDIR $ARDUPILOT_PATH
 RUN Tools/environment_install/install-prereqs-ubuntu.sh -y
 # Add ~/.local/bin to PATH to allow mavproxy.py to be found
 ENV PATH="$PATH:$HOME/.local/bin"
+
 
 ## Build ardupilot components
 RUN ./waf distclean
