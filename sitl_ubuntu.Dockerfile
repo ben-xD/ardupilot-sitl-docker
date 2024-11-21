@@ -3,7 +3,7 @@ FROM ubuntu:22.04
 
 # More releases: https://github.com/ArduPilot/ardupilot/releases
 # Just use the latest one
-ARG RELEASE_TAG=Tracker-4.5.4
+ARG RELEASE_TAG=Tracker-4.5.7
 
 ## Ardupilot prereqs will hang if we don't disable interactive prompts (installing dependencies/apt and timezone configuration)
 ENV TZ=UTC

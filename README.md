@@ -17,8 +17,8 @@ docker run -it orthuk/ardupilot-sitl /home/docker/ardupilot/Tools/autotest/sim_v
 - Clone repo: `git clone https://github.com/ben-xD/ardupilot-sitl-docker`
 - Run `cd ardupilot-sitl-docker`
 - Either:
-  - Download and run the [images I publish](https://hub.docker.com/r/orthuk/ardupilot-sitl): `docker-compose -p sitl up -d remote`
-  - Build a local image: `docker-compose -p sitl up -d local`
+  - Download and run the [images I publish](https://hub.docker.com/r/orthuk/ardupilot-sitl): `docker-compose up -d remote`
+  - Build a local image: `docker-compose up -d local_debian` (or local_ubuntu)
 
 ## Usage
 
@@ -74,3 +74,9 @@ xhost + 127.0.0.1 >/dev/null 2>&1
 ## Alternative approaches
 
 You could consider adding ardupilot to the repo, and copying that in. That will allow you to make changes to Ardupilot and test them on a SITL conveniently.
+
+## Maintainance:
+
+- login: `docker login`
+- build, e.g. `docker-compose up -d local_debian` (or local_ubuntu)
+- publish: `docker push orthuk/ardupilot-sitl-debian:0.1.0` or `docker push orthuk/ardupilot-sitl:0.1.0`

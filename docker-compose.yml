@@ -2,10 +2,20 @@ services:
   local:
     build:
       context: .
-      dockerfile: Dockerfile
+      dockerfile: sitl_ubuntu.Dockerfile
     entrypoint: "tail -f /dev/null"
     environment:
       - DISPLAY=host.docker.internal:0
+    # Keeping the old name, instead of using orthuk/ardupilot-sitl-debian, for now
+    image: orthuk/ardupilot-sitl
+  local_debian:
+    build:
+      context: .
+      dockerfile: sitl_debian.Dockerfile
+    entrypoint: "tail -f /dev/null"
+    environment:
+      - DISPLAY=host.docker.internal:0
+    image: orthuk/ardupilot-sitl-debian
   remote:
     image: orthuk/ardupilot-sitl
     entrypoint: "tail -f /dev/null"
