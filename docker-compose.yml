@@ -8,6 +8,7 @@ services:
       - DISPLAY=host.docker.internal:0
     # Keeping the old name, instead of using orthuk/ardupilot-sitl-debian, for now
     image: orthuk/ardupilot-sitl
+    container_name: sitl
   local_debian:
     build:
       context: .
@@ -16,11 +17,19 @@ services:
     environment:
       - DISPLAY=host.docker.internal:0
     image: orthuk/ardupilot-sitl-debian
-  remote:
+    container_name: sitl
+  remote_ubuntu:
     image: orthuk/ardupilot-sitl
     entrypoint: "tail -f /dev/null"
     environment:
       - DISPLAY=host.docker.internal:0
+    container_name: sitl
+  remote_debian:
+    image: orthuk/ardupilot-sitl-debian
+    entrypoint: "tail -f /dev/null"
+    environment:
+      - DISPLAY=host.docker.internal:0
+    container_name: sitl
     # # Just if we use TCP
     # ports:
     #   - "5760:5760"
