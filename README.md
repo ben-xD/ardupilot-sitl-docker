@@ -1,6 +1,6 @@
 # Ardupilot SITL docker
 
-Run Ardupilot SITL in Docker in Ubuntu LTS 22.04, with SITL and MAVProxy UI using X11/XQuartz display
+Run Ardupilot SITL in Docker in either Ubuntu LTS 22.04 or Debian Bookworm, with SITL and MAVProxy UI using X11/XQuartz display
 
 ![Screenshot of macOS running XQuartz showing 3 windows: ArduPlane SITL, MavProxy Map and MavProxy console](images/xquartz.png)
 
