@@ -6,9 +6,14 @@ Run Ardupilot SITL in Docker in Ubuntu LTS 22.04, with SITL and MAVProxy UI usin
 
 ## Quick usage
 
-*The quick approach skips setting up UIs and won't use docker-compose, but starts the SITL in **one** command, as long as Docker Desktop is installed.*
+*The quick approach skips setting up UIs and won't use docker-compose, but starts the SITL in Ubuntu (6GB) in **one** command, as long as Docker Desktop is installed.*
 ```bash
 docker run -it orthuk/ardupilot-sitl /home/docker/ardupilot/Tools/autotest/sim_vehicle.py -v ArduPlane --frame quadplane --map --console
+```
+
+For the same command, but to use Debian (5GB, 1GB less than Ubuntu), run:
+```bash
+docker run -it orthuk/ardupilot-sitl-debian /home/docker/ardupilot/Tools/autotest/sim_vehicle.py -v ArduPlane --frame quadplane --map --console
 ```
 
 ## Setup

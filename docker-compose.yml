@@ -1,5 +1,5 @@
 services:
-  local:
+  local_ubuntu:
     build:
       context: .
       dockerfile: sitl_ubuntu.Dockerfile
