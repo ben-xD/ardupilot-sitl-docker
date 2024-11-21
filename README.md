@@ -1,6 +1,10 @@
 # Ardupilot SITL docker
 
-Run Ardupilot SITL in Docker in either Ubuntu LTS 22.04 or Debian Bookworm, with SITL and MAVProxy UI using X11/XQuartz display
+Run Ardupilot SITL in Docker in either Ubuntu LTS 22.04 or Debian Bookworm, with SITL and MAVProxy UI using X11/XQuartz display. I recommend Debian because I prefer that distro (smaller, quicker updates). 
+
+Docker Hub links: 
+- [Ubuntu image](https://hub.docker.com/r/orthuk/ardupilot-sitl)
+- [Debian image](https://hub.docker.com/r/orthuk/ardupilot-sitl-debian)
 
 ![Screenshot of macOS running XQuartz showing 3 windows: ArduPlane SITL, MavProxy Map and MavProxy console](images/xquartz.png)
 
@@ -22,8 +26,9 @@ docker run -it orthuk/ardupilot-sitl-debian /home/docker/ardupilot/Tools/autotes
 - Clone repo: `git clone https://github.com/ben-xD/ardupilot-sitl-docker`
 - Change into the new directory: run `cd ardupilot-sitl-docker`
 - Either:
-  - Download and run the images I publish, e.g. [Ubuntu image](https://hub.docker.com/r/orthuk/ardupilot-sitl) or [Ubuntu image](https://hub.docker.com/repository/docker/orthuk/ardupilot-sitl-debian): `docker-compose up -d remote_ubuntu` or `docker-compose up -d remote_debian`
-  - Build a local image: `docker-compose up -d local_debian` (or local_ubuntu)
+  - Download and run the images I publish: `docker-compose up -d [remote_debian | remote_ubuntu]`
+  - Build a local image: `docker-compose up -d [local_debian | local_ubuntu]`
+  - Note: the square bracket means you have to choose! e.g. `docker-compose up -d remote_debian`
 
 ## Usage
 
@@ -85,5 +90,5 @@ You could consider adding ardupilot to the repo, and copying that in. That will 
 Notes for me.
 
 - login: `docker login`
-- build, e.g. `docker-compose up -d local_debian` (or local_ubuntu)
+- build, e.g. `docker-compose up -d [local_debian | local ubuntu]`
 - publish: `docker push orthuk/ardupilot-sitl-debian:0.1.0` or `docker push orthuk/ardupilot-sitl:0.1.0`
