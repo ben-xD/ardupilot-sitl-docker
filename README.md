@@ -6,6 +6,10 @@ Run Ardupilot SITL in Docker
 - Run in multiple Linux distributions: Debian 12 (bookworm) or Ubuntu 22.04 (jammy jellyfish)
 - Supports MAVProxy UI, using X11/XQuartz display
 - Supports multiple platforms architectures: arm64 (aka. aarch64) and x86_64 (aka. amd64)
+- PS: This is the best way to run Ardupilot SITL on arm/M1 macs, because 
+  - [Ardupilot crashes on arm macs](https://github.com/ArduPilot/ardupilot/issues/19588)
+  - [x86_64 emulation (rosetta) seems slower than this](https://github.com/ArduPilot/ardupilot/issues/19588#issuecomment-2489820026)
+  - macOS might drop rosetta in the future (they [did it for the first rosetta](https://en.wikipedia.org/wiki/Rosetta_(software)))
 
 Feedback wanted! Create an issue if you need help or can't get it working.
 
