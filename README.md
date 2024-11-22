@@ -1,10 +1,18 @@
 # Ardupilot SITL docker
 
-Run Ardupilot SITL in Docker in either Ubuntu LTS 22.04 or Debian Bookworm, with SITL and MAVProxy UI using X11/XQuartz display. I recommend Debian because I prefer that distro (smaller, quicker updates). 
+Run Ardupilot SITL in Docker
+
+- Supports multiple host OS with Docker (windows, linux, macOS)
+- Run in multiple Linux distributions: Debian 12 (bookworm) or Ubuntu 22.04 (jammy jellyfish)
+- Supports MAVProxy UI, using X11/XQuartz display
+- Supports multiple platforms architectures: arm64 (aka. aarch64) and x86_64 (aka. amd64)
+
+Feedback wanted! Create an issue if you need help or can't get it working.
 
 Docker Hub links: 
 - [Ubuntu image](https://hub.docker.com/r/orthuk/ardupilot-sitl)
 - [Debian image](https://hub.docker.com/r/orthuk/ardupilot-sitl-debian)
+  - I recommend Debian because I prefer that distro (smaller, quicker updates). 
 
 ![Screenshot of macOS running XQuartz showing 3 windows: ArduPlane SITL, MavProxy Map and MavProxy console](images/xquartz.png)
 
@@ -91,4 +99,6 @@ Notes for me.
 
 - login: `docker login`
 - build, e.g. `docker-compose up -d [local_debian | local ubuntu]`
+  - build for both platforms (Linux x86_64, arm64): `docker build --platform linux/amd64,linux/arm64 --file sitl_debian.Dockerfile -t orthuk/ardupilot-sitl-debian .`
+    - We can't use docker-compose.
 - publish: `docker push orthuk/ardupilot-sitl-debian:0.1.0` or `docker push orthuk/ardupilot-sitl:0.1.0`
