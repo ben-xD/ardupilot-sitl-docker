@@ -25,12 +25,12 @@ Docker Hub links:
 
 ## Quick usage
 
-*The quick approach skips setting up UIs and won't use docker-compose, but starts the SITL in Ubuntu (6GB) in **one** command, as long as Docker Desktop is installed.*
+*The quick approach skips setting up UIs and won't use docker-compose, but starts the SITL in Ubuntu (3.9GB) in **one** command, as long as Docker Desktop is installed.*
 ```bash
 docker run -it orthuk/ardupilot-sitl ./Tools/autotest/sim_vehicle.py -v ArduPlane --frame quadplane --map --console
 ```
 
-For the same command, but to use Debian (5GB, 1GB less than Ubuntu), run:
+For the same command, but to use Debian (3.65GB), run:
 ```bash
 docker run -it orthuk/ardupilot-sitl-debian ./Tools/autotest/sim_vehicle.py -v ArduPlane --frame quadplane --map --console
 ```
