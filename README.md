@@ -1,6 +1,6 @@
 # Ardupilot SITL docker
 
-Run Ardupilot SITL in Docker
+Run [Ardupilot (software-in-the-loop simulator) SITL](https://ardupilot.org/dev/docs/sitl-simulator-software-in-the-loop.html) in Docker
 
 - Supports multiple host OS with Docker (windows, linux, macOS)
 - Run in multiple Linux distributions: Debian 12 (bookworm) or Ubuntu 22.04 (jammy jellyfish)
@@ -10,6 +10,7 @@ Run Ardupilot SITL in Docker
   - [Ardupilot crashes on arm macs](https://github.com/ArduPilot/ardupilot/issues/19588)
   - [x86_64 emulation (rosetta) seems slower than this](https://github.com/ArduPilot/ardupilot/issues/19588#issuecomment-2489820026)
   - macOS might drop rosetta in the future (they [did it for the first rosetta](https://en.wikipedia.org/wiki/Rosetta_(software)))
+- Isolated environment: Even if you use Debian or Ubuntu, this will avoid you running a 500 line script to install dependencies.
 
 Feedback wanted! Create an issue if you need help or can't get it working.
 
