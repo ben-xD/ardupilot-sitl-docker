@@ -2,7 +2,7 @@
 set -euxo pipefail
 
 ## Install debian packages
-BASE_PKGS="build-essential ccache g++ gawk git make wget valgrind screen"
+BASE_PKGS="build-essential ccache g++ gawk git make wget valgrind screen procps"
 SITL_PKGS="libtool libxml2-dev libxslt1-dev python3-dev python3-pip python3-setuptools python3-numpy python3-pyparsing python3-psutil"
 apt-get install -y $BASE_PKGS $SITL_PKGS
 

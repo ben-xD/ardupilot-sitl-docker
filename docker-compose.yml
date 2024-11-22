@@ -3,6 +3,8 @@ services:
     build:
       context: .
       dockerfile: sitl_ubuntu.Dockerfile
+      args:
+        - ARDUPILOT_VERSION=${ARDUPILOT_VERSION}
     entrypoint: "tail -f /dev/null"
     environment:
       - DISPLAY=host.docker.internal:0
@@ -13,6 +15,8 @@ services:
     build:
       context: .
       dockerfile: sitl_debian.Dockerfile
+      args:
+        - ARDUPILOT_VERSION=${ARDUPILOT_VERSION}
     entrypoint: "tail -f /dev/null"
     environment:
       - DISPLAY=host.docker.internal:0
