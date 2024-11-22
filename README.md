@@ -99,6 +99,7 @@ Notes for me.
 
 - login: `docker login`
 - build, e.g. `docker-compose up -d [local_debian | local ubuntu]`
-  - build for both platforms (Linux x86_64, arm64): `docker build --platform linux/amd64,linux/arm64 --file sitl_debian.Dockerfile -t orthuk/ardupilot-sitl-debian .`
+  - build Debian for both architectures (Linux x86_64, arm64): `docker build --platform linux/amd64,linux/arm64 --file sitl_debian.Dockerfile -t orthuk/ardupilot-sitl-debian:0.2.0 .`
+  - build Ubuntu for both architectures: `docker build --platform linux/amd64,linux/arm64 --file sitl_ubuntu.Dockerfile -t orthuk/ardupilot-sitl:0.2.0 .`
     - We can't use docker-compose.
 - publish: `docker push orthuk/ardupilot-sitl-debian:0.1.0` or `docker push orthuk/ardupilot-sitl:0.1.0`
