@@ -14,14 +14,10 @@ RUN echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selectio
 RUN apt update
 RUN apt install -y curl vim
 
-ENV VENV=$HOME/venv-ardupilot
 COPY ./scripts/install_ardupilot_sitl_debian_dependencies.sh .
 RUN ./install_ardupilot_sitl_debian_dependencies.sh
 # Add ~/.local/bin to PATH to allow mavproxy.py to be found after it's installed
 ENV PATH="$PATH:$HOME/.local/bin"
-# Configure the venv binaries (python, pip) to be the first in the PATH, 
-# so that waf (and anything else ) will use it instead of default system pthon.
-ENV PATH="$VENV/bin:$PATH"
 
 # Switch to another user to be consistent with the Ubuntu setup
 ENV USER=docker
@@ -32,6 +28,11 @@ RUN echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
 USER $USER
 ENV HOME=/home/$USER
 WORKDIR $HOME
+
+# Configure the venv binaries (python, pip) to be the first in the PATH, 
+# so that waf (and anything else ) will use it instead of default system pthon.
+ENV VENV=$HOME/venv-ardupilot
+ENV PATH="$VENV/bin:$PATH"
 
 # Clone ardupilot
 RUN git clone https://github.com/ArduPilot/ardupilot.git
