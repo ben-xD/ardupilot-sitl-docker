@@ -1,3 +1,4 @@
+```bash
 Usage: sim_vehicle.py
 
 Options:
@@ -166,3 +167,4 @@ simulated vehicle. Always start from the same directory. It is recommended
 that you start in the main vehicle directory for the vehicle you are
 simulating, for example, start in the ArduPlane directory to simulate
 ArduPlane
+```

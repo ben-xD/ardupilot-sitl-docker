@@ -1,3 +1,4 @@
+```bash
 Usage: mavproxy.py [options]
 
 Options:
@@ -58,3 +59,4 @@ Options:
                         default module list
   --udp-timeout=UDP_TIMEOUT
                         Timeout for udp clients in seconds
+```

@@ -101,9 +101,9 @@ You could consider adding ardupilot to the repo, and copying that in. That will 
 
 Notes for me.
 
-- login: `docker login`
+- login to Docker Hub: `docker login`
 - build, e.g. `docker-compose up -d [local_debian | local ubuntu]`
   - build Debian for both architectures (Linux x86_64, arm64): `docker build --platform linux/amd64,linux/arm64 --file sitl_debian.Dockerfile -t orthuk/ardupilot-sitl-debian:0.2.0 .`
-  - build Ubuntu for both architectures: `docker build --platform linux/amd64,linux/arm64 --file sitl_ubuntu.Dockerfile -t orthuk/ardupilot-sitl:0.2.0 .`
-    - We can't use docker-compose.
+  - build Ubuntu for both architectures (Linux x86_64, arm64): `docker build --platform linux/amd64,linux/arm64 --file sitl_ubuntu.Dockerfile -t orthuk/ardupilot-sitl:0.2.0 .`
+    - We can't use docker-compose for multiplatform builds.
 - publish: `docker push orthuk/ardupilot-sitl-debian:0.1.0` or `docker push orthuk/ardupilot-sitl:0.1.0`
